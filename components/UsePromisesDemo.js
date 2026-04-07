@@ -1,4 +1,9 @@
-export default function UsePromiseDemo({ users }) {
+import fs from "node:fs";
+
+export default async function UsePromiseDemo() {
+  await new Promise((resolve) => setTimeout(resolve, 2000));
+  const data = await fs.readFileSync("dummy-db.json", "utf-8");
+  const users = JSON.parse(data);
   return (
     <div className="rsc">
       <h2>RSC with Data Fetching</h2>
